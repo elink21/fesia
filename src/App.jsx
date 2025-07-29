@@ -1,3 +1,83 @@
+// Mexico logo styled wrapper
+const MexicoLogoWrapper = styled.div`
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+`;
+
+function MexicoLogo() {
+  // Only the flag, centered
+  return (
+    <svg width="160" height="90" viewBox="0 0 160 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Flag */}
+      <rect x="0" y="18" width="72" height="54" rx="8" fill="#fff" stroke="#222" strokeWidth="2.5" />
+      <rect x="0" y="18" width="24" height="54" rx="8" fill="#006341" />
+      <rect x="48" y="18" width="24" height="54" rx="8" fill="#ce1126" />
+      {/* Simple eagle emblem (stylized) */}
+      <ellipse cx="36" cy="45" rx="7" ry="8" fill="#b48a3c" stroke="#7a5a1e" strokeWidth="1.2" />
+      <ellipse cx="36" cy="49" rx="4.4" ry="2.4" fill="#7a5a1e" />
+    </svg>
+  );
+}
+const TelescopeWrapper = styled(motion.div)`
+  width: 120px;
+  margin: 0 auto 1.5rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+function TelescopeSVG() {
+  return (
+    <svg width="120" height="60" viewBox="0 0 120 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Tripod legs */}
+      <rect x="38" y="45" width="6" height="20" rx="3" fill="#888" />
+      <rect x="76" y="45" width="6" height="20" rx="3" fill="#888" />
+      <rect x="57" y="45" width="6" height="20" rx="3" fill="#aaa" />
+      {/* Telescope body */}
+      <rect x="40" y="20" width="40" height="14" rx="7" fill="#b0c4de" stroke="#4a6fa5" strokeWidth="2" />
+      {/* Eyepiece */}
+      <rect x="78" y="25" width="12" height="4" rx="2" fill="#4a6fa5" />
+      {/* Lens */}
+      <circle cx="40" cy="27" r="7" fill="#fff" stroke="#4a6fa5" strokeWidth="2" />
+      {/* Details */}
+      <rect x="50" y="24" width="6" height="2" rx="1" fill="#4a6fa5" />
+      <rect x="62" y="28" width="8" height="2" rx="1" fill="#4a6fa5" />
+    </svg>
+  );
+}
+const LogoWrapper = styled.div`
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+`;
+
+function FesiaLogo() {
+  return (
+    <svg width="260" height="60" viewBox="0 0 260 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="48" fontFamily="'Orbitron', 'Arial', sans-serif" fontWeight="bold" fontSize="48" fill="#00d8ff" letterSpacing="8" style={{filter:'drop-shadow(0 0 8px #00d8ff88)'}}>
+        FESIA
+      </text>
+      <defs>
+        <style>
+          {`@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');`}
+        </style>
+      </defs>
+    </svg>
+  );
+}
 const Mars = styled(motion.div)`
   position: absolute;
   width: 50px;
@@ -166,36 +246,7 @@ function SaturnSVG() {
   );
 }
 
-const Spaceship = styled(motion.div)`
-  position: absolute;
-  width: 120px;
-  height: 60px;
-  left: 40vw;
-  top: 40vh;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
 
-// SVG rocket icon
-function SpaceshipSVG() {
-  return (
-    <svg width="120" height="60" viewBox="0 0 60 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* Rocket body */}
-      <rect x="25" y="8" width="10" height="14" rx="5" fill="#bbb" stroke="#888" strokeWidth="1.5" />
-      {/* Rocket nose cone */}
-      <polygon points="30,2 35,8 25,8" fill="#e74c3c" />
-      {/* Rocket window */}
-      <circle cx="30" cy="15" r="2.5" fill="#00d8ff" stroke="#888" strokeWidth="1" />
-      {/* Rocket fins */}
-      <polygon points="25,22 22,28 30,22" fill="#e74c3c" />
-      <polygon points="35,22 38,28 30,22" fill="#e74c3c" />
-      {/* Rocket flame */}
-      <polygon points="28,22 32,22 30,30" fill="#ffb347" />
-    </svg>
-  );
-}
 
 const Moon = styled(motion.div)`
   position: absolute;
@@ -312,26 +363,14 @@ function App() {
         >
           <SaturnSVG />
         </Saturn>
-        <Spaceship
-          animate={{
-            y: [0, -20, 0],
-            rotate: [0, 2, -2, 0],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        >
-          <SpaceshipSVG />
-        </Spaceship>
-        <Title>FESIA</Title>
-        <ThemeToggle onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
-          Tema:  {theme === 'dark' ? 'Oscuro' : 'Claro'} 
-        </ThemeToggle>
-        <p style={{ maxWidth: 500, fontSize: '1.2rem', margin: '0 auto' }}>
-          Pagina demo para la FESM, creado en Vite con un dominio custom de Cloudflare.
-        </p>
+        <LogoWrapper>
+          <FesiaLogo />
+        </LogoWrapper>
+        <MexicoLogoWrapper>
+          <MexicoLogo />
+        </MexicoLogoWrapper>
+       
+       
       </Space>
     </ThemeProvider>
   );
